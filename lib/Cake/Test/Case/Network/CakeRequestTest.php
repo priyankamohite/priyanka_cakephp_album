@@ -1073,7 +1073,7 @@ class CakeRequestTest extends CakeTestCase {
 		Configure::write('App.baseUrl', false);
 
 		$_SERVER['DOCUMENT_ROOT'] = '/cake/repo/branches';
-		$_SERVER['PHP_SELF'] = '/1.2.x.x/app/webroot/index.php';
+		$_SERVER['PHP_SELF'] = '/1.2.x.x/app/webroot/index.ctp';
 		$_SERVER['PATH_INFO'] = '/posts/view/1';
 
 		$request = new CakeRequest();
@@ -1082,7 +1082,7 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('posts/view/1', $request->url);
 
 		$_SERVER['DOCUMENT_ROOT'] = '/cake/repo/branches/1.2.x.x/app/webroot';
-		$_SERVER['PHP_SELF'] = '/index.php';
+		$_SERVER['PHP_SELF'] = '/index.ctp';
 		$_SERVER['PATH_INFO'] = '/posts/add';
 		$request = new CakeRequest();
 
@@ -1091,14 +1091,14 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('posts/add', $request->url);
 
 		$_SERVER['DOCUMENT_ROOT'] = '/cake/repo/branches/1.2.x.x/test/';
-		$_SERVER['PHP_SELF'] = '/webroot/index.php';
+		$_SERVER['PHP_SELF'] = '/webroot/index.ctp';
 		$request = new CakeRequest();
 
 		$this->assertEquals('', $request->base);
 		$this->assertEquals('/', $request->webroot);
 
 		$_SERVER['DOCUMENT_ROOT'] = '/some/apps/where';
-		$_SERVER['PHP_SELF'] = '/app/webroot/index.php';
+		$_SERVER['PHP_SELF'] = '/app/webroot/index.ctp';
 		$request = new CakeRequest();
 
 		$this->assertEquals('', $request->base);
@@ -1107,7 +1107,7 @@ class CakeRequestTest extends CakeTestCase {
 		Configure::write('App.dir', 'auth');
 
 		$_SERVER['DOCUMENT_ROOT'] = '/cake/repo/branches';
-		$_SERVER['PHP_SELF'] = '/demos/auth/webroot/index.php';
+		$_SERVER['PHP_SELF'] = '/demos/auth/webroot/index.ctp';
 
 		$request = new CakeRequest();
 
@@ -1117,7 +1117,7 @@ class CakeRequestTest extends CakeTestCase {
 		Configure::write('App.dir', 'code');
 
 		$_SERVER['DOCUMENT_ROOT'] = '/Library/WebServer/Documents';
-		$_SERVER['PHP_SELF'] = '/clients/PewterReport/code/webroot/index.php';
+		$_SERVER['PHP_SELF'] = '/clients/PewterReport/code/webroot/index.ctp';
 		$request = new CakeRequest();
 
 		$this->assertEquals('/clients/PewterReport/code', $request->base);
@@ -1131,7 +1131,7 @@ class CakeRequestTest extends CakeTestCase {
  */
 	public function testBaseUrlwithModRewriteAlias() {
 		$_SERVER['DOCUMENT_ROOT'] = '/home/aplusnur/public_html';
-		$_SERVER['PHP_SELF'] = '/control/index.php';
+		$_SERVER['PHP_SELF'] = '/control/index.ctp';
 
 		Configure::write('App.base', '/control');
 
@@ -1145,7 +1145,7 @@ class CakeRequestTest extends CakeTestCase {
 		Configure::write('App.webroot', 'newaffiliate');
 
 		$_SERVER['DOCUMENT_ROOT'] = '/var/www/abtravaff/html';
-		$_SERVER['PHP_SELF'] = '/newaffiliate/index.php';
+		$_SERVER['PHP_SELF'] = '/newaffiliate/index.ctp';
 		$request = new CakeRequest();
 
 		$this->assertEquals('/newaffiliate', $request->base);
@@ -1159,19 +1159,19 @@ class CakeRequestTest extends CakeTestCase {
  */
 	public function testBaseUrlWithNoModRewrite() {
 		$_SERVER['DOCUMENT_ROOT'] = '/Users/markstory/Sites';
-		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/cake/index.php';
-		$_SERVER['PHP_SELF'] = '/cake/index.php/posts/index';
-		$_SERVER['REQUEST_URI'] = '/cake/index.php/posts/index';
+		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/cake/index.ctp';
+		$_SERVER['PHP_SELF'] = '/cake/index.ctp/posts/index';
+		$_SERVER['REQUEST_URI'] = '/cake/index.ctp/posts/index';
 
 		Configure::write('App', array(
 			'dir' => APP_DIR,
 			'webroot' => WEBROOT_DIR,
 			'base' => false,
-			'baseUrl' => '/cake/index.php'
+			'baseUrl' => '/cake/index.ctp'
 		));
 
 		$request = new CakeRequest();
-		$this->assertEquals('/cake/index.php', $request->base);
+		$this->assertEquals('/cake/index.ctp', $request->base);
 		$this->assertEquals('/cake/app/webroot/', $request->webroot);
 		$this->assertEquals('posts/index', $request->url);
 	}
@@ -1183,10 +1183,10 @@ class CakeRequestTest extends CakeTestCase {
  */
 	public function testBaseUrlAndWebrootWithBaseUrl() {
 		Configure::write('App.dir', 'app');
-		Configure::write('App.baseUrl', '/app/webroot/index.php');
+		Configure::write('App.baseUrl', '/app/webroot/index.ctp');
 
 		$request = new CakeRequest();
-		$this->assertEquals('/app/webroot/index.php', $request->base);
+		$this->assertEquals('/app/webroot/index.ctp', $request->base);
 		$this->assertEquals('/app/webroot/', $request->webroot);
 
 		Configure::write('App.baseUrl', '/app/webroot/test.php');
@@ -1194,49 +1194,49 @@ class CakeRequestTest extends CakeTestCase {
 		$this->assertEquals('/app/webroot/test.php', $request->base);
 		$this->assertEquals('/app/webroot/', $request->webroot);
 
-		Configure::write('App.baseUrl', '/app/index.php');
+		Configure::write('App.baseUrl', '/app/index.ctp');
 		$request = new CakeRequest();
-		$this->assertEquals('/app/index.php', $request->base);
+		$this->assertEquals('/app/index.ctp', $request->base);
 		$this->assertEquals('/app/webroot/', $request->webroot);
 
-		Configure::write('App.baseUrl', '/CakeBB/app/webroot/index.php');
+		Configure::write('App.baseUrl', '/CakeBB/app/webroot/index.ctp');
 		$request = new CakeRequest();
-		$this->assertEquals('/CakeBB/app/webroot/index.php', $request->base);
+		$this->assertEquals('/CakeBB/app/webroot/index.ctp', $request->base);
 		$this->assertEquals('/CakeBB/app/webroot/', $request->webroot);
 
-		Configure::write('App.baseUrl', '/CakeBB/app/index.php');
+		Configure::write('App.baseUrl', '/CakeBB/app/index.ctp');
 		$request = new CakeRequest();
 
-		$this->assertEquals('/CakeBB/app/index.php', $request->base);
+		$this->assertEquals('/CakeBB/app/index.ctp', $request->base);
 		$this->assertEquals('/CakeBB/app/webroot/', $request->webroot);
 
-		Configure::write('App.baseUrl', '/CakeBB/index.php');
+		Configure::write('App.baseUrl', '/CakeBB/index.ctp');
 		$request = new CakeRequest();
 
-		$this->assertEquals('/CakeBB/index.php', $request->base);
+		$this->assertEquals('/CakeBB/index.ctp', $request->base);
 		$this->assertEquals('/CakeBB/app/webroot/', $request->webroot);
 
-		Configure::write('App.baseUrl', '/dbhauser/index.php');
+		Configure::write('App.baseUrl', '/dbhauser/index.ctp');
 		$_SERVER['DOCUMENT_ROOT'] = '/kunden/homepages/4/d181710652/htdocs/joomla';
-		$_SERVER['SCRIPT_FILENAME'] = '/kunden/homepages/4/d181710652/htdocs/joomla/dbhauser/index.php';
+		$_SERVER['SCRIPT_FILENAME'] = '/kunden/homepages/4/d181710652/htdocs/joomla/dbhauser/index.ctp';
 		$request = new CakeRequest();
 
-		$this->assertEquals('/dbhauser/index.php', $request->base);
+		$this->assertEquals('/dbhauser/index.ctp', $request->base);
 		$this->assertEquals('/dbhauser/app/webroot/', $request->webroot);
 	}
 
 /**
- * test baseUrl with no rewrite and using the top level index.php.
+ * test baseUrl with no rewrite and using the top level index.ctp.
  *
  * @return void
  */
 	public function testBaseUrlNoRewriteTopLevelIndex() {
-		Configure::write('App.baseUrl', '/index.php');
+		Configure::write('App.baseUrl', '/index.ctp');
 		$_SERVER['DOCUMENT_ROOT'] = '/Users/markstory/Sites/cake_dev';
-		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/cake_dev/index.php';
+		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/cake_dev/index.ctp';
 
 		$request = new CakeRequest();
-		$this->assertEquals('/index.php', $request->base);
+		$this->assertEquals('/index.ctp', $request->base);
 		$this->assertEquals('/app/webroot/', $request->webroot);
 	}
 
@@ -1246,35 +1246,35 @@ class CakeRequestTest extends CakeTestCase {
  * @return void
  */
 	public function testBaseUrlWithAppAndWebrootInDirname() {
-		Configure::write('App.baseUrl', '/approval/index.php');
+		Configure::write('App.baseUrl', '/approval/index.ctp');
 		$_SERVER['DOCUMENT_ROOT'] = '/Users/markstory/Sites/';
-		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/approval/index.php';
+		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/approval/index.ctp';
 
 		$request = new CakeRequest();
-		$this->assertEquals('/approval/index.php', $request->base);
+		$this->assertEquals('/approval/index.ctp', $request->base);
 		$this->assertEquals('/approval/app/webroot/', $request->webroot);
 
-		Configure::write('App.baseUrl', '/webrootable/index.php');
+		Configure::write('App.baseUrl', '/webrootable/index.ctp');
 		$_SERVER['DOCUMENT_ROOT'] = '/Users/markstory/Sites/';
-		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/webrootable/index.php';
+		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/webrootable/index.ctp';
 
 		$request = new CakeRequest();
-		$this->assertEquals('/webrootable/index.php', $request->base);
+		$this->assertEquals('/webrootable/index.ctp', $request->base);
 		$this->assertEquals('/webrootable/app/webroot/', $request->webroot);
 	}
 
 /**
- * test baseUrl with no rewrite, and using the app/webroot/index.php file as is normal with virtual hosts.
+ * test baseUrl with no rewrite, and using the app/webroot/index.ctp file as is normal with virtual hosts.
  *
  * @return void
  */
 	public function testBaseUrlNoRewriteWebrootIndex() {
-		Configure::write('App.baseUrl', '/index.php');
+		Configure::write('App.baseUrl', '/index.ctp');
 		$_SERVER['DOCUMENT_ROOT'] = '/Users/markstory/Sites/cake_dev/app/webroot';
-		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/cake_dev/app/webroot/index.php';
+		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/cake_dev/app/webroot/index.ctp';
 
 		$request = new CakeRequest();
-		$this->assertEquals('/index.php', $request->base);
+		$this->assertEquals('/index.ctp', $request->base);
 		$this->assertEquals('/', $request->webroot);
 	}
 
@@ -1287,7 +1287,7 @@ class CakeRequestTest extends CakeTestCase {
 	public function testGetParamsWithDot() {
 		$_GET = array();
 		$_GET['/posts/index/add_add'] = '';
-		$_SERVER['PHP_SELF'] = '/cake_dev/app/webroot/index.php';
+		$_SERVER['PHP_SELF'] = '/cake_dev/app/webroot/index.ctp';
 		$_SERVER['REQUEST_URI'] = '/cake_dev/posts/index/add.add';
 
 		$request = new CakeRequest();
@@ -1302,7 +1302,7 @@ class CakeRequestTest extends CakeTestCase {
 	public function testGetParamWithUrlencodedElement() {
 		$_GET = array();
 		$_GET['/posts/add/∂∂'] = '';
-		$_SERVER['PHP_SELF'] = '/cake_dev/app/webroot/index.php';
+		$_SERVER['PHP_SELF'] = '/cake_dev/app/webroot/index.ctp';
 		$_SERVER['REQUEST_URI'] = '/cake_dev/posts/add/%E2%88%82%E2%88%82';
 
 		$request = new CakeRequest();
@@ -1321,26 +1321,26 @@ class CakeRequestTest extends CakeTestCase {
 				 array(
 					'App' => array(
 						'base' => false,
-						'baseUrl' => '/index.php',
+						'baseUrl' => '/index.ctp',
 						'dir' => 'app',
 						'webroot' => 'webroot'
 					),
 					'SERVER' => array(
-						'SCRIPT_NAME' => '/index.php',
+						'SCRIPT_NAME' => '/index.ctp',
 						'PATH_TRANSLATED' => 'C:\\Inetpub\\wwwroot',
 						'QUERY_STRING' => '',
-						'REQUEST_URI' => '/index.php',
-						'URL' => '/index.php',
-						'SCRIPT_FILENAME' => 'C:\\Inetpub\\wwwroot\\index.php',
-						'ORIG_PATH_INFO' => '/index.php',
+						'REQUEST_URI' => '/index.ctp',
+						'URL' => '/index.ctp',
+						'SCRIPT_FILENAME' => 'C:\\Inetpub\\wwwroot\\index.ctp',
+						'ORIG_PATH_INFO' => '/index.ctp',
 						'PATH_INFO' => '',
-						'ORIG_PATH_TRANSLATED' => 'C:\\Inetpub\\wwwroot\\index.php',
+						'ORIG_PATH_TRANSLATED' => 'C:\\Inetpub\\wwwroot\\index.ctp',
 						'DOCUMENT_ROOT' => 'C:\\Inetpub\\wwwroot',
-						'PHP_SELF' => '/index.php',
+						'PHP_SELF' => '/index.ctp',
 					),
 				),
 				array(
-					'base' => '/index.php',
+					'base' => '/index.ctp',
 					'webroot' => '/app/webroot/',
 					'url' => ''
 				),
@@ -1350,15 +1350,15 @@ class CakeRequestTest extends CakeTestCase {
 				array(
 					'App' => array(
 						'base' => false,
-						'baseUrl' => '/index.php?',
+						'baseUrl' => '/index.ctp?',
 						'dir' => 'app',
 						'webroot' => 'webroot'
 					),
 					'SERVER' => array(
 						'QUERY_STRING' => '/posts/add',
-						'REQUEST_URI' => '/index.php?/posts/add',
+						'REQUEST_URI' => '/index.ctp?/posts/add',
 						'PHP_SELF' => '',
-						'URL' => '/index.php?/posts/add',
+						'URL' => '/index.ctp?/posts/add',
 						'DOCUMENT_ROOT' => 'C:\\Inetpub\\wwwroot',
 						'argv' => array('/posts/add'),
 						'argc' => 1
@@ -1366,7 +1366,7 @@ class CakeRequestTest extends CakeTestCase {
 				),
 				array(
 					'url' => 'posts/add',
-					'base' => '/index.php?',
+					'base' => '/index.ctp?',
 					'webroot' => '/app/webroot/'
 				)
 			),
@@ -1375,26 +1375,26 @@ class CakeRequestTest extends CakeTestCase {
 				array(
 					'App' => array(
 						'base' => false,
-						'baseUrl' => '/site/index.php',
+						'baseUrl' => '/site/index.ctp',
 						'dir' => 'app',
 						'webroot' => 'webroot',
 					),
 					'SERVER' => array(
-						'SCRIPT_NAME' => '/site/index.php',
+						'SCRIPT_NAME' => '/site/index.ctp',
 						'PATH_TRANSLATED' => 'C:\\Inetpub\\wwwroot',
 						'QUERY_STRING' => '',
-						'REQUEST_URI' => '/site/index.php',
-						'URL' => '/site/index.php',
-						'SCRIPT_FILENAME' => 'C:\\Inetpub\\wwwroot\\site\\index.php',
+						'REQUEST_URI' => '/site/index.ctp',
+						'URL' => '/site/index.ctp',
+						'SCRIPT_FILENAME' => 'C:\\Inetpub\\wwwroot\\site\\index.ctp',
 						'DOCUMENT_ROOT' => 'C:\\Inetpub\\wwwroot',
-						'PHP_SELF' => '/site/index.php',
+						'PHP_SELF' => '/site/index.ctp',
 						'argv' => array(),
 						'argc' => 0
 					),
 				),
 				array(
 					'url' => '',
-					'base' => '/site/index.php',
+					'base' => '/site/index.ctp',
 					'webroot' => '/site/app/webroot/'
 				),
 			),
@@ -1403,27 +1403,27 @@ class CakeRequestTest extends CakeTestCase {
 				array(
 					'App' => array(
 						'base' => false,
-						'baseUrl' => '/site/index.php',
+						'baseUrl' => '/site/index.ctp',
 						'dir' => 'app',
 						'webroot' => 'webroot'
 					),
 					'GET' => array('/posts/add' => ''),
 					'SERVER' => array(
-						'SCRIPT_NAME' => '/site/index.php',
+						'SCRIPT_NAME' => '/site/index.ctp',
 						'PATH_TRANSLATED' => 'C:\\Inetpub\\wwwroot',
 						'QUERY_STRING' => '/posts/add',
-						'REQUEST_URI' => '/site/index.php/posts/add',
-						'URL' => '/site/index.php/posts/add',
-						'ORIG_PATH_TRANSLATED' => 'C:\\Inetpub\\wwwroot\\site\\index.php',
+						'REQUEST_URI' => '/site/index.ctp/posts/add',
+						'URL' => '/site/index.ctp/posts/add',
+						'ORIG_PATH_TRANSLATED' => 'C:\\Inetpub\\wwwroot\\site\\index.ctp',
 						'DOCUMENT_ROOT' => 'C:\\Inetpub\\wwwroot',
-						'PHP_SELF' => '/site/index.php/posts/add',
+						'PHP_SELF' => '/site/index.ctp/posts/add',
 						'argv' => array('/posts/add'),
 						'argc' => 1
 					),
 				),
 				array(
 					'url' => 'posts/add',
-					'base' => '/site/index.php',
+					'base' => '/site/index.ctp',
 					'webroot' => '/site/app/webroot/'
 				)
 			),
@@ -1432,23 +1432,23 @@ class CakeRequestTest extends CakeTestCase {
 				array(
 					'App' => array(
 						'base' => false,
-						'baseUrl' => '/index.php',
+						'baseUrl' => '/index.ctp',
 						'dir' => 'app',
 						'webroot' => 'webroot'
 					),
 					'SERVER' => array(
 						'DOCUMENT_ROOT' => '/Library/WebServer/Documents/site/app/webroot',
-						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/app/webroot/index.php',
+						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/app/webroot/index.ctp',
 						'QUERY_STRING' => '',
-						'REQUEST_URI' => '/index.php/posts/index',
-						'SCRIPT_NAME' => '/index.php',
+						'REQUEST_URI' => '/index.ctp/posts/index',
+						'SCRIPT_NAME' => '/index.ctp',
 						'PATH_INFO' => '/posts/index',
-						'PHP_SELF' => '/index.php/posts/index',
+						'PHP_SELF' => '/index.ctp/posts/index',
 					),
 				),
 				array(
 					'url' => 'posts/index',
-					'base' => '/index.php',
+					'base' => '/index.ctp',
 					'webroot' => '/'
 				),
 			),
@@ -1457,23 +1457,23 @@ class CakeRequestTest extends CakeTestCase {
 				array(
 					'App' => array(
 						'base' => false,
-						'baseUrl' => '/index.php',
+						'baseUrl' => '/index.ctp',
 						'dir' => 'app',
 						'webroot' => 'webroot'
 					),
 					'SERVER' => array(
 						'DOCUMENT_ROOT' => '/Library/WebServer/Documents/site/app/webroot',
-						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/app/webroot/index.php',
+						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/app/webroot/index.ctp',
 						'QUERY_STRING' => '',
-						'REQUEST_URI' => '/index.php',
-						'SCRIPT_NAME' => '/index.php',
+						'REQUEST_URI' => '/index.ctp',
+						'SCRIPT_NAME' => '/index.ctp',
 						'PATH_INFO' => '',
-						'PHP_SELF' => '/index.php',
+						'PHP_SELF' => '/index.ctp',
 					),
 				),
 				array(
 					'url' => '',
-					'base' => '/index.php',
+					'base' => '/index.ctp',
 					'webroot' => '/'
 				),
 			),
@@ -1482,23 +1482,23 @@ class CakeRequestTest extends CakeTestCase {
 				array(
 					'App' => array(
 						'base' => false,
-						'baseUrl' => '/site/index.php',
+						'baseUrl' => '/site/index.ctp',
 						'dir' => 'app',
 						'webroot' => 'webroot'
 					),
 					'SERVER' => array(
 						'SERVER_NAME' => 'localhost',
 						'DOCUMENT_ROOT' => '/Library/WebServer/Documents',
-						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/index.php',
-						'REQUEST_URI' => '/site/index.php/posts/index',
-						'SCRIPT_NAME' => '/site/index.php',
+						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/index.ctp',
+						'REQUEST_URI' => '/site/index.ctp/posts/index',
+						'SCRIPT_NAME' => '/site/index.ctp',
 						'PATH_INFO' => '/posts/index',
-						'PHP_SELF' => '/site/index.php/posts/index',
+						'PHP_SELF' => '/site/index.ctp/posts/index',
 					),
 				),
 				array(
 					'url' => 'posts/index',
-					'base' => '/site/index.php',
+					'base' => '/site/index.ctp',
 					'webroot' => '/site/app/webroot/',
 				),
 			),
@@ -1507,22 +1507,22 @@ class CakeRequestTest extends CakeTestCase {
 				array(
 					'App' => array(
 						'base' => false,
-						'baseUrl' => '/site/index.php',
+						'baseUrl' => '/site/index.ctp',
 						'dir' => 'app',
 						'webroot' => 'webroot'
 					),
 					'SERVER' => array(
 						'SERVER_NAME' => 'localhost',
 						'DOCUMENT_ROOT' => '/Library/WebServer/Documents',
-						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/index.php',
-						'REQUEST_URI' => '/site/index.php/',
-						'SCRIPT_NAME' => '/site/index.php',
-						'PHP_SELF' => '/site/index.php/',
+						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/index.ctp',
+						'REQUEST_URI' => '/site/index.ctp/',
+						'SCRIPT_NAME' => '/site/index.ctp',
+						'PHP_SELF' => '/site/index.ctp/',
 					),
 				),
 				array(
 					'url' => '',
-					'base' => '/site/index.php',
+					'base' => '/site/index.ctp',
 					'webroot' => '/site/app/webroot/',
 				),
 			),
@@ -1531,7 +1531,7 @@ class CakeRequestTest extends CakeTestCase {
 				array(
 					'App' => array(
 						'base' => false,
-						'baseUrl' => '/site/index.php',
+						'baseUrl' => '/site/index.ctp',
 						'dir' => 'app',
 						'webroot' => 'webroot'
 					),
@@ -1539,18 +1539,18 @@ class CakeRequestTest extends CakeTestCase {
 					'SERVER' => array(
 						'SERVER_NAME' => 'localhost',
 						'DOCUMENT_ROOT' => '/Library/WebServer/Documents',
-						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/index.php',
-						'REQUEST_URI' => '/site/index.php/posts/index?a=b&c=d',
-						'SCRIPT_NAME' => '/site/index.php',
+						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/index.ctp',
+						'REQUEST_URI' => '/site/index.ctp/posts/index?a=b&c=d',
+						'SCRIPT_NAME' => '/site/index.ctp',
 						'PATH_INFO' => '/posts/index',
-						'PHP_SELF' => '/site/index.php/posts/index',
+						'PHP_SELF' => '/site/index.ctp/posts/index',
 						'QUERY_STRING' => 'a=b&c=d'
 					),
 				),
 				array(
 					'urlParams' => array('a' => 'b', 'c' => 'd'),
 					'url' => 'posts/index',
-					'base' => '/site/index.php',
+					'base' => '/site/index.ctp',
 					'webroot' => '/site/app/webroot/',
 				),
 			),
@@ -1566,10 +1566,10 @@ class CakeRequestTest extends CakeTestCase {
 					'SERVER' => array(
 						'SERVER_NAME' => 'localhost',
 						'DOCUMENT_ROOT' => '/Library/WebServer/Documents',
-						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/index.php',
+						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/index.ctp',
 						'REQUEST_URI' => '/site/',
-						'SCRIPT_NAME' => '/site/app/webroot/index.php',
-						'PHP_SELF' => '/site/app/webroot/index.php',
+						'SCRIPT_NAME' => '/site/app/webroot/index.ctp',
+						'PHP_SELF' => '/site/app/webroot/index.ctp',
 					),
 				),
 				array(
@@ -1590,9 +1590,9 @@ class CakeRequestTest extends CakeTestCase {
 					'SERVER' => array(
 						'SERVER_NAME' => 'localhost',
 						'DOCUMENT_ROOT' => '/Library/WebServer/Documents',
-						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/index.php',
-						'SCRIPT_NAME' => '/site/app/webroot/index.php',
-						'PHP_SELF' => '/site/app/webroot/index.php',
+						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/index.ctp',
+						'SCRIPT_NAME' => '/site/app/webroot/index.ctp',
+						'PHP_SELF' => '/site/app/webroot/index.ctp',
 						'PATH_INFO' => null,
 						'REQUEST_URI' => null,
 					),
@@ -1615,9 +1615,9 @@ class CakeRequestTest extends CakeTestCase {
 					'SERVER' => array(
 						'SERVER_NAME' => 'localhost',
 						'DOCUMENT_ROOT' => '/Library/WebServer/Documents/site/app/webroot',
-						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/app/webroot/index.php',
-						'SCRIPT_NAME' => '/index.php',
-						'PHP_SELF' => '/index.php',
+						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/app/webroot/index.ctp',
+						'SCRIPT_NAME' => '/index.ctp',
+						'PHP_SELF' => '/index.ctp',
 						'PATH_INFO' => null,
 						'REQUEST_URI' => null,
 					),
@@ -1641,10 +1641,10 @@ class CakeRequestTest extends CakeTestCase {
 					'SERVER' => array(
 						'SERVER_NAME' => 'localhost',
 						'DOCUMENT_ROOT' => '/Library/WebServer/Documents/site/app/webroot',
-						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/app/webroot/index.php',
-						'SCRIPT_NAME' => '/index.php',
+						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/app/webroot/index.ctp',
+						'SCRIPT_NAME' => '/index.ctp',
 						'QUERY_STRING' => '/posts/add&',
-						'PHP_SELF' => '/index.php',
+						'PHP_SELF' => '/index.ctp',
 						'PATH_INFO' => null,
 						'REQUEST_URI' => '/posts/add',
 					),

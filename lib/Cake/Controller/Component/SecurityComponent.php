@@ -141,7 +141,7 @@ class SecurityComponent extends Component {
  * Whether to use CSRF protected forms.  Set to false to disable CSRF protection on forms.
  *
  * @var boolean
- * @see http://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)
+ * @see http://www.owasp.org/index.ctp/Cross-Site_Request_Forgery_(CSRF)
  * @see SecurityComponent::$csrfExpires
  */
 	public $csrfCheck = true;

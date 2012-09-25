@@ -576,7 +576,7 @@ class HttpSocketTest extends CakeTestCase {
 	}
 
 /**
- * Test urls like http://cakephp.org/index.php?somestring without key/value pair for query
+ * Test urls like http://cakephp.org/index.ctp?somestring without key/value pair for query
  *
  * @return void
  */
@@ -586,13 +586,13 @@ class HttpSocketTest extends CakeTestCase {
 			'uri' => array(
 				'scheme' => 'http',
 				'host' => 'cakephp.org',
-				'path' => 'index.php',
+				'path' => 'index.ctp',
 				'query' => 'somestring'
 			),
 			'method' => 'GET'
 		);
 		$response = $this->Socket->request($request);
-		$this->assertContains("GET /index.php?somestring HTTP/1.1", $this->Socket->request['line']);
+		$this->assertContains("GET /index.ctp?somestring HTTP/1.1", $this->Socket->request['line']);
 	}
 
 /**

@@ -741,7 +741,7 @@ class DispatcherTest extends CakeTestCase {
 		Router::connect('/:controller/:action/*');
 
 		$Dispatcher = new TestDispatcher();
-		Configure::write('App.baseUrl', '/index.php');
+		Configure::write('App.baseUrl', '/index.ctp');
 		$url = new CakeRequest('some_controller/home/param:value/param2:value2');
 		$response = $this->getMock('CakeResponse');
 
@@ -759,7 +759,7 @@ class DispatcherTest extends CakeTestCase {
 		Router::connect('/:controller/:action/*');
 
 		$Dispatcher = new TestDispatcher();
-		Configure::write('App.baseUrl', '/index.php');
+		Configure::write('App.baseUrl', '/index.ctp');
 		$url = new CakeRequest('dispatcher_test_interface/index');
 		$response = $this->getMock('CakeResponse');
 
@@ -777,7 +777,7 @@ class DispatcherTest extends CakeTestCase {
 		Router::connect('/:controller/:action/*');
 
 		$Dispatcher = new TestDispatcher();
-		Configure::write('App.baseUrl', '/index.php');
+		Configure::write('App.baseUrl', '/index.ctp');
 		$url = new CakeRequest('dispatcher_test_abstract/index');
 		$response = $this->getMock('CakeResponse');
 
@@ -794,7 +794,7 @@ class DispatcherTest extends CakeTestCase {
 			'View' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS)
 		));
 		$Dispatcher = new TestDispatcher();
-		Configure::write('App.baseUrl', '/index.php');
+		Configure::write('App.baseUrl', '/index.ctp');
 		$url = new CakeRequest('pages/home/param:value/param2:value2');
 		$response = $this->getMock('CakeResponse');
 
@@ -805,7 +805,7 @@ class DispatcherTest extends CakeTestCase {
 		$expected = array('0' => 'home', 'param' => 'value', 'param2' => 'value2');
 		$this->assertSame($expected, $Dispatcher->controller->passedArgs);
 
-		Configure::write('App.baseUrl', '/pages/index.php');
+		Configure::write('App.baseUrl', '/pages/index.ctp');
 
 		$url = new CakeRequest('pages/home');
 		$Dispatcher->dispatch($url, $response, array('return' => 1));
@@ -824,7 +824,7 @@ class DispatcherTest extends CakeTestCase {
 
 		require CAKE . 'Config' . DS . 'routes.php';
 		$Dispatcher = new TestDispatcher();
-		Configure::write('App.baseUrl', '/timesheets/index.php');
+		Configure::write('App.baseUrl', '/timesheets/index.ctp');
 
 		$url = new CakeRequest('timesheets');
 		$Dispatcher->dispatch($url, $response, array('return' => 1));
@@ -836,7 +836,7 @@ class DispatcherTest extends CakeTestCase {
 		$Dispatcher->dispatch($url, $response, array('return' => 1));
 
 		$this->assertEquals('Timesheets', $Dispatcher->controller->name);
-		$this->assertEquals('/timesheets/index.php', $url->base);
+		$this->assertEquals('/timesheets/index.ctp', $url->base);
 
 		$url = new CakeRequest('test_dispatch_pages/camelCased');
 		$Dispatcher->dispatch($url, $response, array('return' => 1));
@@ -874,7 +874,7 @@ class DispatcherTest extends CakeTestCase {
 		$_POST = array();
 		$Dispatcher = new TestDispatcher();
 		Configure::write('Routing.prefixes', array('admin'));
-		Configure::write('App.baseUrl','/cake/repo/branches/1.2.x.x/index.php');
+		Configure::write('App.baseUrl','/cake/repo/branches/1.2.x.x/index.ctp');
 		$url = new CakeRequest('admin/test_dispatch_pages/index/param:value/param2:value2');
 		$response = $this->getMock('CakeResponse');
 
@@ -886,10 +886,10 @@ class DispatcherTest extends CakeTestCase {
 		$this->assertSame($Dispatcher->controller->passedArgs, array('param' => 'value', 'param2' => 'value2'));
 		$this->assertTrue($Dispatcher->controller->params['admin']);
 
-		$expected = '/cake/repo/branches/1.2.x.x/index.php/admin/test_dispatch_pages/index/param:value/param2:value2';
+		$expected = '/cake/repo/branches/1.2.x.x/index.ctp/admin/test_dispatch_pages/index/param:value/param2:value2';
 		$this->assertSame($expected, $Dispatcher->controller->here);
 
-		$expected = '/cake/repo/branches/1.2.x.x/index.php';
+		$expected = '/cake/repo/branches/1.2.x.x/index.ctp';
 		$this->assertSame($expected, $Dispatcher->controller->base);
 	}
 
@@ -936,7 +936,7 @@ class DispatcherTest extends CakeTestCase {
  */
 	public function testAutomaticPluginDispatch() {
 		$_POST = array();
-		$_SERVER['PHP_SELF'] = '/cake/repo/branches/1.2.x.x/index.php';
+		$_SERVER['PHP_SELF'] = '/cake/repo/branches/1.2.x.x/index.ctp';
 
 		Router::reload();
 		$Dispatcher = new TestDispatcher();

@@ -1837,9 +1837,9 @@ class ValidationTest extends CakeTestCase {
 		$this->assertFalse(Validation::url('http://www.domain.-invalidtld'));
 		$this->assertTrue(Validation::url('http://123456789112345678921234567893123456789412345678951234567896123.com'));
 		$this->assertFalse(Validation::url('http://this-domain-is-too-loooooong-by-icann-rules-maximum-length-is-63.com'));
-		$this->assertTrue(Validation::url('http://www.domain.com/blogs/index.php?blog=6&tempskin=_rss2'));
+		$this->assertTrue(Validation::url('http://www.domain.com/blogs/index.ctp?blog=6&tempskin=_rss2'));
 		$this->assertTrue(Validation::url('http://www.domain.com/blogs/parenth()eses.php'));
-		$this->assertTrue(Validation::url('http://www.domain.com/index.php?get=params&amp;get2=params'));
+		$this->assertTrue(Validation::url('http://www.domain.com/index.ctp?get=params&amp;get2=params'));
 		$this->assertTrue(Validation::url('http://www.domain.com/ndex.php?get=params&amp;get2=params#anchor'));
 		$this->assertFalse(Validation::url('http://www.domain.com/fakeenco%ode'));
 		$this->assertTrue(Validation::url('http://www.domain.com/real%20url%20encodeing'));

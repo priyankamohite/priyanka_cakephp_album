@@ -151,8 +151,8 @@ class CakeSession {
 			self::$path = '/';
 			return;
 		}
-		if (strpos($base, 'index.php') !== false) {
-			 $base = str_replace('index.php', '', $base);
+		if (strpos($base, 'index.ctp') !== false) {
+			 $base = str_replace('index.ctp', '', $base);
 		}
 		if (strpos($base, '?') !== false) {
 			 $base = str_replace('?', '', $base);
