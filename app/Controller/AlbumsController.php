@@ -19,18 +19,6 @@ class AlbumsController extends AppController {
             $this->Album->create();
             if ($this->Album->saveAssociated($this->request->data))
             {
-//                $album_artist=array('AlbumArtist'=>array(
-//                   '0'=>array('album_id'=>1,'artist_id'=>1),
-//                   '1'=>array('album_id'=>2,'artist_id'=>2)
-//               ));
-               // pr($album_artist);die;
-//               if($this->AlbumsArtist->save($this->request->data))
-//              {
-//                   $this->Session->setFlash('AlbumArtist has been saved.');
-//               }
-
-               // pr($this->request->data);die;
-
                 $id=$this->Album->id;
                 $album_artist=array('album_id','artist_id');
                 $artists=$this->request->data['Artist'];
@@ -43,9 +31,24 @@ class AlbumsController extends AppController {
                     $album_artist['artist_id']=$artist;
                     $album_artist_send[$cnt++]=$album_artist;
                     }
-                    //$this->Album->AlbumsArtist->save(array('album_id'=>$this->request->data['Album']['id'],'artist_id'=>$this->request->data['Artist']['id']));
                 }
                 $this->Album->AlbumsArtist->saveAll($album_artist_send);
+
+                $tid=$this->Tag->id;
+                $album_tag=array('album_id','tag_id');
+                $tags=$this->request->data['Tag'];
+                $cnt1=0;
+                foreach($tags as $tag)
+                {
+                    if($tag!=0)
+                    {
+                        $album_tag['album_id']=$tid;
+                        $album_tag['tag_id']=$tag;
+                        $album_tag_send[$cnt1++]=$album_tag;
+                    }
+                }
+                $this->Album->AlbumsTag->saveAll($album_tag_send);
+
                 $this->Session->setFlash('Album has been saved.');
                 $this->redirect(array('action' => 'index'));
             } else
