@@ -3,7 +3,7 @@
 <script type="text/javascript">
     jQuery(function(){
         jQuery("#name").validate({
-            expression: "if (VAL) return true; else return false;",
+            expression: "if (isNaNVAL) return true; else return false;",
             message: "invalid name"
         });
 
@@ -13,13 +13,17 @@
         });
 
         jQuery("#price").validate({
-            expression: "if (VAL return true; else return false;",
+           expression: "if (!isNaN(VAL) && VAL) return true; else return false;",
             message: "invalid price"
         });
 
         jQuery("#release_date").validate({
-            expression: "if (VAL) return true; else return false;",
-            message: "invalid release_date"
+            rules: {
+                field: {
+                    required: true,
+                    date: true
+                }
+            }
         });
 
         jQuery("#bitrate").validate({

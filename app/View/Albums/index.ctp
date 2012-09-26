@@ -28,7 +28,9 @@
             foreach ($album['AlbumsArtist'] as $artist)
             {
 
-                echo $artist['Artist']['name'];
+                echo $this->Html->link($artist['Artist']['name'],
+                    array('controller' => 'artists', 'action' => 'view', $artist['Artist']['id']));
+
                 echo "<br/>";
                 // }
             }
