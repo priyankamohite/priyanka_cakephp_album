@@ -3,7 +3,6 @@ class AlbumsController extends AppController {
     public $helpers = array('Html', 'Form');
 
     public function index() {
-        pr($this->Album->find('all'));
         $this->set('albums', $this->Album->find('all',array('recursive' => 2)));
         $this->set('artists', $this->Album->AlbumsArtist->find('all'));
         $this->set('tags', $this->Album->AlbumsTag->find('all'));
@@ -34,7 +33,7 @@ class AlbumsController extends AppController {
                 }
                 $this->Album->AlbumsArtist->saveAll($album_artist_send);
 
-                $tid=$this->Tag->id;
+
                 $album_tag=array('album_id','tag_id');
                 $tags=$this->request->data['Tag'];
                 $cnt1=0;
@@ -42,7 +41,7 @@ class AlbumsController extends AppController {
                 {
                     if($tag!=0)
                     {
-                        $album_tag['album_id']=$tid;
+                        $album_tag['album_id']=$id;
                         $album_tag['tag_id']=$tag;
                         $album_tag_send[$cnt1++]=$album_tag;
                     }

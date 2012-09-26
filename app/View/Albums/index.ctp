@@ -46,7 +46,7 @@
         <td>
             <?php
 
-            foreach ($tags as $tag)
+            foreach ($album['AlbumsTag'] as $tag)
             {
                 echo $tag['Tag']['name'];
                 echo "<br/>";

@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d9367cd-dec7-435f-8630-5aebd08d51b2" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/webroot/js/jquery.validate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Controller/AlbumsController.php" afterPath="$PROJECT_DIR$/app/Controller/AlbumsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/View/Albums/add.ctp" afterPath="$PROJECT_DIR$/app/View/Albums/add.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/View/Albums/index.ctp" afterPath="$PROJECT_DIR$/app/View/Albums/index.ctp" />
     </list>
     <ignored path="album.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,19 +28,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="add.ctp" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="add.ctp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/View/Albums/add.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="11" selection-start="819" selection-end="819" vertical-scroll-proportion="-16.916666">
+            <state line="15" column="29" selection-start="619" selection-end="619" vertical-scroll-proportion="0.3186969">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlbumsController.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="jquery.validate.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/webroot/js/jquery.validate.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="74" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AlbumsController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Controller/AlbumsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="50" selection-start="1443" selection-end="1443" vertical-scroll-proportion="0.7808219">
+            <state line="43" column="48" selection-start="1553" selection-end="1553" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -55,7 +67,7 @@
       <file leaf-file-name="index.ctp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/View/Albums/index.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="13" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.0">
+            <state line="48" column="48" selection-start="1515" selection-end="1515" vertical-scroll-proportion="-17.541666">
               <folding />
             </state>
           </provider>
@@ -85,7 +97,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/View/Tags/view.ctp" />
         <option value="$PROJECT_DIR$/app/View/Tags/add.ctp" />
         <option value="$PROJECT_DIR$/app/Model/Tag.php" />
         <option value="$PROJECT_DIR$/app/View/Tags/edit.ctp" />
@@ -97,10 +108,11 @@
         <option value="$PROJECT_DIR$/app/View/Artists/index.ctp" />
         <option value="$PROJECT_DIR$/app/View/Albums/view.ctp" />
         <option value="$PROJECT_DIR$/app/Config/routes.php" />
-        <option value="$PROJECT_DIR$/app/View/Albums/index.ctp" />
         <option value="$PROJECT_DIR$/app/Config/database.php" />
-        <option value="$PROJECT_DIR$/app/View/Albums/add.ctp" />
+        <option value="$PROJECT_DIR$/app/webroot/js/jquery.validate.js" />
         <option value="$PROJECT_DIR$/app/Controller/AlbumsController.php" />
+        <option value="$PROJECT_DIR$/app/View/Albums/index.ctp" />
+        <option value="$PROJECT_DIR$/app/View/Albums/add.ctp" />
       </list>
     </option>
   </component>
@@ -187,7 +199,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
+              <option name="myItemId" value="webroot" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -205,47 +217,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
+              <option name="myItemId" value="webroot" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Albums" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="album" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="album" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="album" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="album" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -255,6 +231,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/webroot/js" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" scope="Directory">
@@ -267,6 +248,13 @@
       <method>
         <option name="PhingTarget" enabled="false" />
       </method>
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
+      <method />
     </configuration>
     <list size="0" />
   </component>
@@ -354,11 +342,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Controller/PagesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Controller/TagsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="0" selection-start="713" selection-end="713" vertical-scroll-proportion="0.0" />
@@ -414,16 +397,9 @@
         <state line="16" column="2" selection-start="414" selection-end="414" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/View/Albums/index.ctp">
+    <entry file="file://$PROJECT_DIR$/app/webroot/js/jquery.validate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="13" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/View/Albums/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="11" selection-start="819" selection-end="819" vertical-scroll-proportion="-16.916666">
+        <state line="33" column="74" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -435,9 +411,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/View/Albums/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="48" selection-start="1515" selection-end="1515" vertical-scroll-proportion="-17.541666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Controller/AlbumsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="50" selection-start="1443" selection-end="1443" vertical-scroll-proportion="0.7808219">
+        <state line="43" column="48" selection-start="1553" selection-end="1553" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/View/Albums/add.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="29" selection-start="619" selection-end="619" vertical-scroll-proportion="0.3186969">
           <folding />
         </state>
       </provider>
