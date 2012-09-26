@@ -14,17 +14,49 @@ class AlbumsController extends AppController {
     }
 
     public function add() {
-        if ($this->request->is('post')) {
+        if ($this->request->is('post'))
+        {
             $this->Album->create();
-            if ($this->Album->saveAssociated($this->request->data)) {
+            if ($this->Album->saveAssociated($this->request->data))
+            {
+//                $album_artist=array('AlbumArtist'=>array(
+//                   '0'=>array('album_id'=>1,'artist_id'=>1),
+//                   '1'=>array('album_id'=>2,'artist_id'=>2)
+//               ));
+               // pr($album_artist);die;
+//               if($this->AlbumsArtist->save($this->request->data))
+//              {
+//                   $this->Session->setFlash('AlbumArtist has been saved.');
+//               }
+
+               // pr($this->request->data);die;
+
+                $id=$this->Album->id;
+                $album_artist=array('album_id','artist_id');
+                $artists=$this->request->data['Artist'];
+                $cnt=0;
+                foreach($artists as $artist)
+                {
+                    if($artist!=0)
+                    {
+                    $album_artist['album_id']=$id;
+                    $album_artist['artist_id']=$artist;
+                    $album_artist_send[$cnt++]=$album_artist;
+                    }
+                    //$this->Album->AlbumsArtist->save(array('album_id'=>$this->request->data['Album']['id'],'artist_id'=>$this->request->data['Artist']['id']));
+                }
+                $this->Album->AlbumsArtist->saveAll($album_artist_send);
                 $this->Session->setFlash('Album has been saved.');
                 $this->redirect(array('action' => 'index'));
             } else
             {
-                $this->set('artists',$this->Album->AlbumsArtist->Artist->find('all'));
-                $this->set('tags',$this->Album->AlbumsTag->Tag->find('all'));
-
+                $this->Session->setFlash('Album not saved.');
             }
+        }
+        else
+        {
+            $this->set('artists',$this->Album->AlbumsArtist->Artist->find('all'));
+            $this->set('tags',$this->Album->AlbumsTag->Tag->find('all'));
         }
     }
 
